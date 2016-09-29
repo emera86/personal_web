@@ -1,5 +1,4 @@
 body {
-  padding: 20px;
   font-size: 16px;
   font-family: 'Ubuntu';
 }
@@ -22,7 +21,8 @@ body {
   font-weight: bold;
   cursor: pointer;
   margin: 0px;
-  font-size: 2em;
+  padding: 20px;
+  font-size: 4em;
 }
 
 .navbar-brand a:hover, .navbar-brand a:focus {
