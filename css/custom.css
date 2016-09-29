@@ -2,12 +2,15 @@ body {
   padding: 20px;
   font-size: 16px;
   font-family: 'Ubuntu';
+  background-color: #F5D0A9;
 }
 
 /** HEADER **/
 
 h1 {
   font-family: 'Amatic SC';
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #header-nav {
