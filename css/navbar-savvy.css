@@ -7158,7 +7158,6 @@ tbody.collapse.in {
 
     .main-nav__item-content {
         bottom: 20px;
-        font-family: 'Amatic SC';
     }
 
     .main-nav__item-icon-wrapper {
@@ -7496,8 +7495,9 @@ body {
     position: absolute;
     width: 100%;
     bottom: 30px;
-    color: #bec3cf;
-    font-family: Novecento_wide_bold;
+    color: #7ac366;
+    /*color: #bec3cf;*/
+    font-family: 'Amatic SC';
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
