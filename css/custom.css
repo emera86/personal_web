@@ -8,11 +8,10 @@ body {
 
 #header-nav {
   background-color: #555c70;
-  color: #fff;
-  opacity: .55;
+  color: #c3c3c3;
   border-radius: 0;
   border: 0px;
-  padding: 20px 0 0 0;
+  margin: 20px 0 0 0;
 }
 
 .navbar-brand {
@@ -23,8 +22,7 @@ body {
   font-family: 'Amatic SC';
   font-weight: bold;
   font-size: 3.5em;
-  /**color: #7ac366;**/
-  color: #c3c3c3;
+  color: #7ac366;
   cursor: pointer;
   margin: 0px;
   padding: 20px;
