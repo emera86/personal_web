@@ -7444,7 +7444,8 @@ body {
 }
 
 .main-nav__item--active .main-nav__item-icon,.main-nav__item:hover .main-nav__item-icon {
-    color: #fff
+    /*color: #fff*/
+   color: #000000;
 }
 
 .main-nav__item:hover .main-nav__item-content {
@@ -7476,7 +7477,8 @@ body {
 
 .main-nav__item-icon {
     font-size: 38px;
-    color: #c7cbd4
+    /*color: #c7cbd4*/
+    color: #000000;
 }
 
 .main-nav__item-icon:before {
@@ -7498,9 +7500,9 @@ body {
     color: #7ac366;
     /*color: #bec3cf;*/
     font-family: 'Amatic SC';
-    font-size: 24px;
+    font-size: 2em;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     -webkit-transition: inherit;
     -o-transition: inherit;
     transition: inherit
