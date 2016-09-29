@@ -1,22 +1,124 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Personal web by Lucía Rodrigo Insausti</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/custom.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" media="screen">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Cuprum|Shadows+Into+Light|Ubuntu" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/navbar-savvy.css" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Open+Sans+Condensed:300|Cuprum|Shadows+Into+Light|Ubuntu" rel="stylesheet" type="text/css">
   </head>
   
   <body>
     
-    <section class="page-header">
-      <h1 class="project-name">Lucía Rodrigo Insausti</h1>
-      <h2 class="description">"Some text here that I don't know yet"</h2>
-      
-    </section>
+    <!-- ****************************************************************************************** -->
+    <!-- header: navbar -->
+    <!-- ****************************************************************************************** -->
+    
+      <header>
+        <nav id="header-nav" class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header">
+              <div class="navbar-brand">
+                <a href="index2.html"><h1>Lucía Rodrigo Insausti</h1></a>
+                <h2 class="description">"Some text here that I don't know yet"</h2>
+              </div><!-- #navbar-brand -->
+              <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div><!-- #navbar-header -->
+            <div id="collapsable-nav" class="collapse navbar-collapse">
+              <ul id="nav-list" class="nav navbar-nav navbar-right">
+                <li id="navHomeButton" class="visible-xs active">
+                  <a href="index.html">
+                    <span class="glyphicon glyphicon-home"></span> Home</a>
+                </li>
+                <li id="navMenuButton">
+                  <a href="#" onclick="$dc.loadMenuCategories();">
+                    <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> About</a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-education"></span><br class="hidden-xs"> Education</a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-envelope"></span><br class="hidden-xs"> Contact</a>
+                </li>
+              </ul><!-- #nav-list -->
+            </div><!-- .collapse .navbar-collapse -->
+          </div><!-- .container -->
+        </nav><!-- #header-nav -->
+        
+                      <div id="headerMenuSlidingElement" class="main-nav__sliding-element"></div>
+                    <ul class="main-nav">
+                        <li class="main-nav__item main-nav__item--active">
+                            <a class="main-nav__item-link" href="index.html">
+                                <span class="main-nav__item-icon-wrapper">
+                                    <i class="main-nav__item-icon icon-home"></i>
+                                </span>
+                                <span class="main-nav__item-content">Home</span>
+                            </a>
+                        </li>
+                        <li class="main-nav__item">
+                            <a class="main-nav__item-link" href="resume.html">
+                                <span class="main-nav__item-icon-wrapper">
+                                    <i class="main-nav__item-icon icon-profile"></i>
+                                </span>
+                                <span class="main-nav__item-content">Resume</span>
+                            </a>
+                        </li>
+                        <li class="main-nav__item">
+                            <a class="main-nav__item-link" href="services.html">
+                                <span class="main-nav__item-icon-wrapper">
+                                    <i class="main-nav__item-icon icon-stats-bars2"></i>
+                                </span>
+                                <span class="main-nav__item-content">Services</span>
+                            </a>
+                        </li>
+                        <li class="main-nav__item">
+                            <a class="main-nav__item-link" href="portfolio.html">
+                                <span class="main-nav__item-icon-wrapper">
+                                    <i class="main-nav__item-icon icon-books"></i>
+                                </span>
+                                <span class="main-nav__item-content">Portfolio</span>
+                            </a>
+                        </li>
+                        <li class="main-nav__item">
+                            <a class="main-nav__item-link" href="blog.html">
+                                <span class="main-nav__item-icon-wrapper">
+                                    <i class="main-nav__item-icon icon-blog"></i>
+                                </span>
+                                <span class="main-nav__item-content">Blog</span>
+                            </a>
+                        </li>
+                        <li class="main-nav__item">
+                            <a class="main-nav__item-link" href="contact.html">
+                                <span class="main-nav__item-icon-wrapper">
+                                    <i class="main-nav__item-icon icon-envelop"></i>
+                                </span>
+                                <span class="main-nav__item-content">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mobile-menu">
+                        <a class="mobile-menu__toggle" href="index.html#">
+                            <span class="mobile-menu__toggle__icon">
+                                <i class="fa fa-bars mobile-menu__toggle__icon__open"></i>
+                                <i class="fa fa-times mobile-menu__toggle__icon__close"></i>
+                            </span>
+                        </a>
+                    </div>
+    </header>
+    
+    <!-- ****************************************************************************************** -->
+    <!-- main content -->
+    <!-- ****************************************************************************************** -->
 
     <section class="main-content">
       
@@ -29,6 +131,11 @@
       </footer>
 
     </section>
-
+    
+    <!-- jQuery (Bootstrap JS plugins depend on it) -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ajax-utils.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
