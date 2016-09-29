@@ -7,10 +7,9 @@ body {
 
 #header-nav {
   background-color: #555c70;
-  color: #fff;
+  color: #3c3c3c;
   border-radius: 0;
   border: 0px;
-  border-bottom: 3px solid black;
 }
 
 .navbar-brand {
