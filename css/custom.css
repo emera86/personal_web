@@ -22,7 +22,12 @@ body {
   cursor: pointer;
   margin: 0px;
   padding: 20px;
-  font-size: 4em;
+  font-size: 3em;
+}
+
+.navbar-brand h2{
+  margin: 0px;
+  padding: 20px;
 }
 
 .navbar-brand a:hover, .navbar-brand a:focus {
