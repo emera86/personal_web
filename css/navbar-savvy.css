@@ -7157,7 +7157,8 @@ tbody.collapse.in {
     }
 
     .main-nav__item-content {
-        bottom: 20px
+        bottom: 20px;
+        font-family: 'Amatic SC';
     }
 
     .main-nav__item-icon-wrapper {
