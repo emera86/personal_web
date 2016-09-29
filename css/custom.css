@@ -1,7 +1,6 @@
 body {
   padding: 20px;
   font-size: 16px;
-  color: #fff;
   font-family: 'Ubuntu';
 }
 
@@ -9,6 +8,32 @@ body {
 
 h1 {
   font-family: 'Amatic SC';
+}
+
+#header-nav {
+  background-color: #F5D0A9;
+  border-radius: 0;
+  border: 0px;
+  border-bottom: 1px solid black;
+}
+
+.navbar-brand {
+  height: auto;
+}
+
+.navbar-brand h1{
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+#collapsable-nav {
+  border-color: black;
 }
 
 #nav-list {
@@ -26,7 +51,7 @@ h1 {
 }
 
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
-  border: 1px solid #61122f;
+  border: 1px solid black;
 }
 .navbar-header button.navbar-toggle {
   clear: both;
