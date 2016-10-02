@@ -2,6 +2,7 @@ body {
   font-size: 16px;
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #c3c3c3;
+  /*padding: 20px;*/
 }
 
 /** HEADER **/
@@ -11,7 +12,7 @@ body {
   color: #c3c3c3;
   border-radius: 0;
   border: 0px;
-  margin: 20px 0 0 0;
+  margin: 0;
 }
 
 .navbar-brand {
@@ -67,6 +68,29 @@ body {
 
 
 /* HOME PAGE */
+
+/*@media(min-width=800px){*/
+
+  .container{
+    margin: 0;
+    padding: 0;
+  }
+
+  #sidebar{
+    background-color: #fff000;
+    color: #000;
+  }
+
+  #profile-picture {
+    size: 100px 100px;
+    background-image: url(img/test_profile.png); 
+  }
+
+  #main-text{
+    background-color: #000fff;
+    color: #000;
+  }
+
 
 /* END HOME PAGE */
 
