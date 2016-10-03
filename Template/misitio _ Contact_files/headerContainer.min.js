@@ -1,0 +1,1 @@
+define("headerContainer",["lodash","core","containerCommon"],function(a,b,c){"use strict";var d=b.compMixins,e=c.mixins.fixedPositionContainerMixin;return{displayName:"HeaderContainer",mixins:[d.skinBasedComp,e],statics:{useSantaTypes:!0},getSkinProperties:function(){return{"":{style:this.getRootStyle(this.props.style)},inlineContent:{children:this.props.children}}}}});
