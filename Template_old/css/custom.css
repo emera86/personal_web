@@ -1,0 +1,101 @@
+body {
+  font-size: 16px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #c3c3c3;
+  /*padding: 20px;*/
+}
+
+/** HEADER **/
+
+#header-nav {
+  background-color: #555c70;
+  color: #c3c3c3;
+  border-radius: 0;
+  border: 0px;
+  margin: 0;
+}
+
+.navbar-brand {
+  height: auto;
+}
+
+.navbar-brand h1{
+  font-family: 'Amatic SC';
+  font-weight: bold;
+  font-size: 3.5em;
+  color: #7ac366;
+  cursor: pointer;
+  margin: 0px;
+  padding: 20px;
+}
+
+.navbar-brand h2{
+  margin: 0px;
+  padding: 0 0 20px 20px;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+#collapsable-nav {
+  border-color: black;
+}
+
+#nav-list {
+  margin-top: 10px;
+}
+#nav-list a {
+  color: #951C49;
+  text-align: center;
+}
+#nav-list a:hover {
+  background: #E7E7E7;
+}
+#nav-list a span {
+  font-size: 1.8em;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+  border: 1px solid black;
+}
+.navbar-header button.navbar-toggle {
+  clear: both;
+  margin-top: -30px;
+}
+
+/* END HEADER */
+
+
+/* HOME PAGE */
+
+/*@media(min-width=800px){*/
+
+  .container{
+    margin: 0;
+    padding: 0;
+  }
+
+  #sidebar{
+    background-color: #fff000;
+    color: #000;
+  }
+
+  #profile-picture {
+    size: 100px 100px;
+    background-image: url(img/test_profile.png); 
+  }
+
+  #main-text{
+    background-color: #000fff;
+    color: #000;
+  }
+
+
+/* END HOME PAGE */
+
+
+
+/* FOOTER */
+
+/* END FOOTER */

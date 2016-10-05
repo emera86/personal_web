@@ -1,0 +1,618 @@
+@import "z-index";
+
+html.device-phone {
+  body {
+    overflow-y: auto;
+  }
+}
+
+html.device-mobile-optimized {
+  &.device-android {
+    margin-bottom: 1px;
+  }
+
+  &.blockSiteScrolling {
+    > body {
+        position: fixed;
+        width: 100%;
+    }
+  }
+}
+
+body {
+  // When in Mobile and in Public Viewer Mode
+  &.device-mobile-optimized {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    //should be deleted as soon as eyes pass 7/9/2016
+    &.qa-mode{
+      overflow-y: auto;
+    }
+
+    #SITE_CONTAINER {
+      width: 320px;
+      overflow-x: visible;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    // Prevents any block directly inside a body to be wider than it. On some browsers anything that is wider than body can result unexpected zooming
+    > * {
+      max-width: 100% !important;
+    }
+
+    // On Mobile, site structure should have no inner scroll either
+    .SITE_ROOT {
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  }
+
+  &.device-mobile-non-optimized {
+
+    #SITE_CONTAINER {
+      > :not(.mobile-non-optimized-overflow) {
+        // On Mobile with non-optimized view, site structure should have no inner scroll either
+        .SITE_ROOT {
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+      }
+    }
+
+    &.fullScreenMode {
+      background-color: #5f6360;
+
+      .SITE_ROOT,
+      #SITE_BACKGROUND,
+      #MOBILE_ACTIONS_MENU {
+        visibility: hidden;
+      }
+    }
+  }
+
+  // When in full screen mode
+  &.fullScreenMode {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+
+    &.device-mobile-optimized #TINY_MENU {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  // Current solution for scrollable full screen mode components, such as
+  // the old eCommerce. Don't apply this to e.g. images due to site
+  // losing its current scroll position. See SE-12840
+  &.fullScreenMode-scrollable.device-mobile-optimized {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    //When in wixapps full screen mode for wixapps zoom temporarily hide site structure
+    .SITE_ROOT,
+    #masterPage {
+      overflow-x: hidden !important;
+      overflow-y: hidden !important;
+    }
+
+    #masterPage,
+    #SITE_BACKGROUND {
+      height: auto !important;
+    }
+  }
+}
+
+.fullScreenOverlay {
+  z-index: $zindex-full-screen-overlay;
+  position: fixed;
+  left: 0;
+  top: -60px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+
+  > .fullScreenOverlayContent {
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    transform: translateZ(0);
+  }
+}
+
+.mobile-actions-menu-wrapper{
+  z-index: $zindex-mobile-actions-menu-wrapper;
+}
+
+/* modes */
+
+@import "z-index";
+
+.SITE_ROOT {
+  min-height: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.POPUPS_ROOT {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: scroll;
+  position: fixed;
+  z-index: $zindex-drop-down-menu-base-dropWrapper;
+
+  &.mobile {
+    z-index: $zindex-full-screen-overlay;
+  }
+}
+
+.POPUPS_WRAPPER {
+  position: relative;
+  overflow: hidden;
+
+  > div { /* page */
+    margin: 0 auto;
+  }
+}
+
+.auto-generated-link {
+  color: inherit;
+}
+
+/* circle-preloader */
+
+.circle-preloader {
+  $diameter: 30px;
+  $border-width: 3px;
+  $timing: 1s;
+  $blue1: #7fccf7;
+  $blue2: #3899ec;
+  $white1: #f0f0f0;
+  $white2: #dcdcdc;
+
+  @mixin semi-circle() {
+    content: '';
+    top: 0;
+    left: 0;
+    right: -100%;
+    bottom: 0;
+    border: $border-width solid currentColor;
+    border-color: currentColor transparent transparent currentColor;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(-45deg);
+    animation: inner-rotate $timing / 2 1ms linear infinite alternate;
+  }
+
+  animation: semi-rotate $timing 1ms linear infinite;
+  height: $diameter;
+  left: 50%;
+  margin-left: - $diameter / 2;
+  margin-top: - $diameter / 2;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100% 50%;
+  width: $diameter / 2;
+
+  &::before {
+    @include semi-circle();
+    color: $blue1;
+  }
+
+  &::after {
+    @include semi-circle();
+    color: $blue2;
+    opacity: 0;
+  }
+
+  &.white {
+    &::before {
+      color: $white1;
+    }
+
+    &::after {
+      color: $white2;
+    }
+  }
+
+}
+
+@keyframes inner-rotate {
+  to {
+    opacity: 1;
+    transform: rotate(115deg);
+  }
+}
+
+@keyframes semi-rotate {
+  from {
+    animation-timing-function: ease-out;
+    transform: rotate(180deg);
+  }
+  45% {
+    transform: rotate(198deg);
+  }
+  55% {
+    transform: rotate(234deg);
+  }
+  to {
+    transform: rotate(540deg);
+  }
+}
+
+/* componentes-globals */
+
+.hidden-comp-ghost-mode {
+  opacity: 0.5;
+}
+
+.g-transparent-a {
+  &:link,
+  &:visited {
+    border-color: transparent;
+  }
+}
+
+.transitioning-comp {
+  transition-property: background-color, color !important;
+
+  & * {
+    transition: inherit !important;
+  }
+}
+
+/* reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea, input, select {
+  font-family: Helvetica, Arial, sans-serif;
+  box-sizing: border-box; // Opera/IE 8+
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+:focus {
+  outline: 0;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+// *
+// * Set body and site structure to a minimum height of 100%
+// * this causes the body to be smaller than it's content, which means that when scrolling it looks like the content is out of body.
+// *
+html, body{
+  height : 100%;
+}
+
+// *************************************
+// * Body overflow settings, BE CAREFUL WHEN CHANGING THIS
+// *
+
+//  When in Public Viewer Mode
+body {
+  overflow-x : auto;
+  overflow-y : scroll;
+}
+
+/* selectionSharer */
+
+.selectionSharerContainer {
+   position: absolute;
+   background-color: #ffffff;
+   box-shadow: 0px 4px 10px 0px rgba(57, 86, 113, 0.24);
+   width: 142px;
+   height: 45px;
+   border-radius: 100px;
+   text-align: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 42%;  /*controls horizontal position */
+    border-width: 10px 10px 0; /* vary these values to change the angle of the vertex */
+    border-style: solid;
+    border-color: #ffffff transparent;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width:0;
+  }
+
+  .selectionSharerOption {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: top;
+    margin: 14px 12px 12px 14px;
+    z-index: -1;
+  }
+
+  .selectionSharerVerticalSeparator {
+    margin-top: 9px;
+    margin-bottom: 18px;
+    background-color: #eaf7ff;
+    height: 26px;
+    width: 1px;
+    display: inline-block;
+  }
+
+}
+
+/* textEditor */
+
+// When in Text Editor
+body[contenteditable] {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+// *******************OLD text classes, DO NOT DELETE ****************
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+}
+
+.singleLineText {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignJustify {
+  text-align: justify;
+}
+
+// ************************  NEW text, used in migration for exceptions **************************
+ul, ol {
+  &.font_100 {
+    color: rgb(8, 8, 8);
+    font-family: 'Arial, Helvetica, sans-serif', serif;
+    font-size: 10px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    margin: 0;
+    text-decoration: none;
+    line-height: normal;
+    letter-spacing: normal;
+
+    li {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+// For SplitHtmlText
+letter {
+  position: relative;
+  display: inline-block;
+}
+
+word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+word,
+letter {
+  &.space {
+    display: inline;
+  }
+}
+
+/* transforms */
+
+// For 3D Transforms Safari Workaround
+[data-z-counter] {
+  z-index: 0;
+}
+
+[data-z-counter="0"] {
+  z-index: auto;
+}
+
+/* z-index */
+
+//All z-index for all viewer components
+
+$zindex-eplayer-framed-play-player-after: -1;
+$zindex-eplayer-framed-play-slider-after: -1;
+$zindex-eplayer-large-play-player-after: -1;
+$zindex-eplayer-large-play-slider-after: -1;
+$zindex-eplayer-round-play-player-after: -1;
+$zindex-eplayer-round-play-slider-after: -1;
+$zindex-single-audio-player-skin-player-after: -1;
+$zindex-single-audio-player-skin-slider-after: -1;
+$zindex-tiny-menu-skin-menuContainer-hidden: -1;
+
+$zindex-blogs-slider-show-span-after-autoplay: 0;
+$zindex-slide-show-clean-and-simple-span-after-autoplay: 0;
+$zindex-slide-show-clean-and-simple-2-span-after-autoplay: 0;
+$zindex-slide-show-iron-span-after-autoplay: 0;
+$zindex-slide-show-scotch-tape-span-after-autoplay: 0;
+$zindex-slide-show-gallery-lifted-shadow-skin-span-after-autoplay: 0;
+$zindex-slide-show-text-floating-autoplayOff-span-after-autoplay: 0;
+$zindex-slide-show-text-floating-autoplayOn-span-after-autoplay: 0;
+$zindex-slide-show-text-overlay-span-after-autoplay: 0;
+$zindex-slide-show-text-text-right-span-after-autoplay: 0;
+$zindex-image-button-skin-link: 0;
+$zindex-rssbutton-skin-link: 0;
+$zindex-youtube-subscribe-button-skin-youtube-iframe: 0;
+$zindex-sloopy-matrix-gallery-skin-base: 0;
+
+$zindex-subscribe-from-box-layout-shiny-span-in-li: 1;
+$zindex-image-button-skin-transition-fade: 1;
+$zindex-gallery-matrix-displayer-sloppy-host-before: 1;
+$zindex-gallery-matrix-displayer-sloppy-host-after: 1;
+$zindex-rssbutton-skin-transition-fade-image: 1;
+$zindex-youtube-subscribe-button-skin-hover-mode: 1;
+$zindex-multi-selection-skin-dropdown: 1;
+$zindex-menu-button-skin-button-icon-after-host: 1;
+$zindex-menu-button-skin-button-bult-after-host: 1;
+$zindex-service-item-skin-button-icon-after-host: 1;
+$zindex-domain-search-bar-skin-suffix-dropdown: 1;
+
+$zindex-gallery-matrix-displayer-sloppy-zoom: 2;
+$zindex-rssbutton-skin-prepare-adh-active-image: 2;
+$zindex-tiny-menu-skin: 2;
+$zindex-tiny-menu-skin-menuContainer: 2;
+$zindex-image-button-skin-prepare-adh-active: 2;
+
+$zindex-gallery-matrix-displayer-sloppy-link: 3;
+$zindex-rssbutton-skin-prepare-adh-hover-image: 3;
+$zindex-image-button-skin-prepare-adh-hover: 3;
+
+$zindex-image-button-skin-link-after: 5;
+$zindex-rssbutton-skin-link-after: 5;
+
+$zindex-back-to-top-button-host: 10;
+$zindex-box-slide-show-skin: 10;
+$zindex-youtube-subscribe-button-skin-hit-out-vertical: 10;
+$zindex-youtube-subscribe-button-skin-hit-out-horizontal: 10;
+
+$zindex-link-bar-items-skin-image: 10;
+$zindex-admin-login-skin-host: 10;
+
+//RESERVED: z-index 49 (fixed comps rendered in absolute in editor)
+$zindex-screen-width-base-fixedPosition: 50;
+//RESERVED: z-index 50 for fixed position components, not through skins - but through fixedPositionRenderPlugin
+
+$zindex-mobile-actions-menu-skin-wrapper: 98;
+$zindex-mobile-actions-menu-skin-lists: 98;
+
+$zindex-message-viewer-skin-host: 99;
+$zindex-mobile-message-viewer-skin-host: 99;
+$zindex-ecoms-checkout-message-dialog-skin-host: 99;
+$zindex-mobile-try-again-message-view-skin-host: 99;
+$zindex-password-login-skin-host: 99;
+$zindex-password-login-skin-mobile: 99;
+$zindex-smc-container-skin-host: 99;
+$zindex-smc-container-skin-mobile: 99;
+$zindex-try-again-message-viewer-skin-host: 99;
+
+
+
+$zindex-media-zoom-skin-xbutton: 500;
+$zindex-mobile-media-zoom-skin-host: 500;
+$zindex-non-optimized-media-zoom-skin-host: 500;
+
+$zindex-mobile-media-zoom-skin-dialogBox: 1000;
+
+$zindex-dialogs-host: 100001;
+$zindex-dialogs-mobile: 100001;
+
+$zindex-vertical-menu-arrow-skin-sub-menu: 999;
+$zindex-vertical-menu-ribbon-skin-sub-menu: 999;
+$zindex-vertical-menu-separated-button-fixed-width-skin-sub-menu: 999;
+$zindex-vertical-menu-separated-button-skin-sub-menu: 999;
+$zindex-vertical-menu-solid-color-skin-sub-menu: 999;
+$zindex-vertical-menu-solid-color-skin-sub-menu-before: 999;
+$zindex-vertical-menu-text-skin-sub-menu: 999;
+$zindex-vertical-menu-text-with-separators-skin-sub-menu: 999;
+$zindex-wix-ads-site-preview-skin-mobile-footerLabel: 999;
+$zindex-wix-ads-web-skin-mobile-Ad: 999;
+$zindex-wix-ads-web-skin-desktop-WAD-bottom: 999;
+$zindex-wix-ads-web-skin-desktop-WAD-top: 999;
+$zindex-area-tooltip-skin-tooltip: 999;
+
+$zindex-vertical-menu-arrow-skin-arrow-wrapper: 1000;
+$zindex-mobile-actions-menu-wrapper: 1000;
+
+$zindex-date-picker-calendar: 1002;
+
+$zindex-full-screen-overlay: 1005;
+
+$zindex-drop-down-menu-base-dropWrapper: 99999;
+$zindex-lines-menu-button-skin-moreContainer: 99999;
+$zindex-arrows-menu-nskin-more-container: 99999;
+$zindex-separate-arrows-down-menu-nskin-more-container: 99999;
+$zindex-separate-arrows-menu-nskin-more-container: 99999;
+$zindex-arrows-menu-skin-more-container: 99999;
+$zindex-circle-menu-skin-more-container: 99999;
+$zindex-separate-arrows-down-menu-skin-more-container: 99999;
+$zindex-separate-arrows-menu-skin-more-container: 99999;
+$zindex-package-picker-skin-tooltip: 99999;
+$zindex-media-zoom-skin-host: 99999;
+
+$zindex-tpa-modal-skin-host: 100000;
+$zindex-tpa-popup-skin-host: 100000;
+
+// NOTE: z-index 2147483646 is for the blocking layer (when pined component is edited)
+// NOTE: z-index 2147483647 is for the current component in showCompOnTopRenderPlugin - and this is the MAX SUPPORTED Z-INDEX
